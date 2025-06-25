@@ -1,0 +1,28 @@
+{
+  "name": "frontend_hw",
+  "version": "1.0.0",
+  "description": "Frontend homework project",
+  "author": "Dekel",
+  "license": "ISC",
+  
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "install:browsers": "playwright install",
+    "test:debug": "playwright test --debug",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:safari": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project='Mobile Chrome' --project='iPhone 12'",
+    "test:desktop": "playwright test --project=chromium --project=firefox --project=webkit"
+  },
+
+  "keywords": [],
+  "devDependencies": {
+    "@playwright/test": "^1.53.1",
+    "@types/node": "^24.0.3",
+    "typescript": "^5.0.0"
+  }
+}
