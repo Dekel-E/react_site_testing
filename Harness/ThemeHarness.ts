@@ -1,6 +1,6 @@
 
 import { Page, Locator } from '@playwright/test';
-import { THEMES, THEME_TOGGLE_BUTTON} from '../../constants';
+import { THEMES, THEME_TOGGLE_BUTTON} from '../constants';
 /**
  * ThemeComponent class provides methods to interact with the theme toggle functionality of a web page.
  * It allows toggling between dark and light themes, checking the visibility of the theme toggle button

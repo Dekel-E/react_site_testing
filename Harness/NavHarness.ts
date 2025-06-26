@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePage } from '../BasePage';
+import { BasePage } from './BasePage';
 
 // This file defines the NavigationComponent class for handling navigation-related actions on a web page.
 

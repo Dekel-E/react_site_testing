@@ -1,8 +1,8 @@
 import { Page, Locator,expect } from '@playwright/test';
 import { BasePage } from './BasePage';
-import { SearchHarness } from './Harness/SearchHarness'
-import { ThemeComponent } from './Harness/ThemeHarness';
-import { NavigationComponent } from './Harness/NavHarness';
+import { SearchHarness } from './SearchHarness'
+import { ThemeComponent } from './ThemeHarness';
+import { NavigationComponent } from './NavHarness';
 ;
 export class ReactHomePage extends BasePage {
 //page elements

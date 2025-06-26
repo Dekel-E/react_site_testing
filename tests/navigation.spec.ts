@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { ReactHomePage } from '../pages/ReactHomePage';
+import { ReactHomePage } from '../Harness/ReactHomePage';
 import { VIEWPORT_SIZES } from '../constants';
 
 test.describe('Basic Navigation Tests', () => {

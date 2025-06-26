@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { ReactHomePage } from '../pages/ReactHomePage';
+import { ReactHomePage } from '../Harness/ReactHomePage';
 import {MAX_TIME_TO_LOAD} from '../constants';
 
 // Performance tests for the React home page

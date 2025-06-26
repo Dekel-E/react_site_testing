@@ -1,5 +1,5 @@
 import { Page, Locator, expect } from '@playwright/test';
-import { BasePage } from '../BasePage';
+import { BasePage } from './BasePage';
 
 // SearchHarness class that encapsulates search functionality
 // This class provides methods to interact with the search feature on the page

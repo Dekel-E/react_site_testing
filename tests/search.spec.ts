@@ -1,5 +1,5 @@
 import { test, expect, BrowserContext} from '@playwright/test';
-import { ReactHomePage } from '../pages/ReactHomePage';  
+import { ReactHomePage } from '../Harness/ReactHomePage';  
 import { KNOWN_SEARCH_TERMS } from '../constants';
 
 test.describe('Search Functionality Tests', () => {
@@ -17,7 +17,7 @@ test.describe('Search Functionality Tests', () => {
     || await homePage.search.isSearchInputVisible();
     //if not we skip the test, cant test search functionality without search button or input field
     if (!searchExists) {
-        console.log('Search button not found - skipping test');
+  
         test.skip();
         return;
     }
