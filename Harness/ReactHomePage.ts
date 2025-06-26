@@ -72,8 +72,8 @@ readonly navigation: NavigationComponent;
  * Navigates to the home page by clicking the logo.
  * @returns {Promise<boolean>} Returns true if the navigation was successful, false otherwise.
  */
-  async navigateHomeViaLogo(): Promise<boolean> {
-    return await this.navigation.clickLogoToGoHome();
+  async navigateHomeViaLogo(): Promise<void> {
+     await this.navigation.clickLogoToGoHome();
   }
 /**
  * Searches for the specified text on the page.

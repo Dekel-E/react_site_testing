@@ -110,17 +110,10 @@ export class NavigationComponent {
  * Click on the logo to go home
  * @returns {Promise<boolean>} Returns true if the logo link is visible and clickable, false otherwise.
  */
-  async clickLogoToGoHome(): Promise<boolean> {
-    try {
-      if (await this.basePage.isElementVisible(this.logoLink)) {
-        await this.logoLink.click();
-        await this.page.waitForLoadState('networkidle');
-        return true;
-      }
-      return false;
-    } catch {
-      return false;
-    }
+  async clickLogoToGoHome(): Promise<void> {
+    await this.logoLink.isVisible(); 
+    await this.logoLink.click();
+    await this.page.waitForLoadState('networkidle');
   }
 /**
  * Validates the accessibility of a navigation link.

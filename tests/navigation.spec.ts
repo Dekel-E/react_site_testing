@@ -43,17 +43,12 @@ test.describe('Basic Navigation Tests', () => {
         await page.waitForLoadState('networkidle');
       }
       
-      // Use the component method
-      const logoClicked = await homePage.navigateHomeViaLogo();
-      
-      if (logoClicked) {
-        const currentUrl = page.url();
-        expect(currentUrl).toBe("https://react.dev/");
-      } else {
-       test.fail();
-      }
+      await homePage.navigateHomeViaLogo();
+      await page.waitForLoadState('networkidle');
+      const currentUrl = page.url();
+      expect(currentUrl).toBe("https://react.dev/");
     });
-
+     
 
     test('verify mobile navigation exists', async ({ page }) => {
       await page.setViewportSize(VIEWPORT_SIZES.MOBILE);

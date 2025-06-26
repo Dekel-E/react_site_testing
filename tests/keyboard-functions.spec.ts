@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { ReactHomePage } from '../pages/ReactHomePage';
+import { ReactHomePage } from '../Harness/ReactHomePage';
 import { KEYBOARD_SHORTCUTS , THEMES , FIRST_ELEMENTS , KNOWN_SEARCH_TERMS,
    ARROW_KEYS_TEST} from'../constants';
 
