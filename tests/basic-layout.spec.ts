@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { ReactHomePage } from '../pages/ReactHomePage';
 import { VIEWPORT_SIZES , THEMES } from '../constants';
+import { exec } from 'child_process';
 
 
 test.describe('Basic Layout Tests', () => {
@@ -37,20 +38,23 @@ test.describe('verify page layout for ', () => {
   test('Tablet', async ({ page }) => {
     // Resize to tablet size
     await page.setViewportSize(VIEWPORT_SIZES.TABLET);
-    await page.waitForTimeout(500); // Allow time for responsive layout to adjust
-    
+     await page.reload()
+    await page.waitForTimeout(1000); // Allow time for responsive layout to adjust
+    await expect(page).toHaveScreenshot('tablet-layout.png', { fullPage: true });
   });
 
   test('Mobile', async ({ page }) => {
      // Resize to mobile size
     await page.setViewportSize(VIEWPORT_SIZES.MOBILE);
-    await page.waitForTimeout(500); // Allow time for responsive layout to adjust
+     await page.reload();
+    await page.waitForTimeout(1000); // Allow time for responsive layout to adjust
     await expect(page).toHaveScreenshot('mobile-layout.png', { fullPage: true });
   });
 
 
 test('Desktop', async ({ page }) => {
     await page.setViewportSize(VIEWPORT_SIZES.DESKTOP);
+     await page.reload();
     await page.waitForTimeout(500); // Allow time for responsive layout to adjust
     await expect(page).toHaveScreenshot('desktop-layout.png', { fullPage: true });
   });

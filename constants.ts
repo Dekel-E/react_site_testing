@@ -26,7 +26,11 @@ export const VIEWPORT_SIZES = {
   DESKTOP: { width: 1920, height: 1080 }
 }
 export const MAX_TIME_TO_LOAD = 3000; 
+
 export const FIRST_ELEMENTS = ['Learn more.', 'React', 'v19.1'];
+
 export const THEME_TOGGLE_BUTTON = 'button[aria-label*="Dark Mode"], button[aria-label*="Light Mode"], ' +
       'button[aria-label="Use Dark Mode"], button[aria-label="Use Light Mode"], ' +
       'button:has-text("Dark"), button:has-text("Light")'
+
+export const ARROW_KEYS_TEST =['ArrowDown', 'ArrowDown', 'ArrowUp', 'ArrowUp']

@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { ReactHomePage } from '../pages/ReactHomePage';
-import { KEYBOARD_SHORTCUTS , THEMES , FIRST_ELEMENTS } from'../constants';
+import { KEYBOARD_SHORTCUTS , THEMES , FIRST_ELEMENTS , KNOWN_SEARCH_TERMS,
+   ARROW_KEYS_TEST} from'../constants';
 
 
 test.describe('Keyboard Functionality Tests', () => {
@@ -42,35 +43,41 @@ test.describe('Keyboard Functionality Tests', () => {
     }
   });
 
-test('Arrow key navigation', async ({ page }) => {
+test('Arrow key navigation in search', async ({ page }) => {
   // Check if search is available, if not we skip the test
   const searchExists = await homePage.search.isSearchButtonVisible();
   if (!searchExists) {
     test.skip();
   }
+  const searchTerms= KNOWN_SEARCH_TERMS;
+  let searchedItemsCount = 0;
   //search for known term that gives results
-  const searchWorked = await homePage.search.searchForText('React');
-  expect(searchWorked).toBe(true);
-  
-  await page.waitForTimeout(1000);
-  
-  // If we encounter an error during search, we skip the test
-  let errorOccurred = false;
-  page.on('pageerror', () => {
-    errorOccurred = true;
-  });
-
-  // Press arrow keys
-  await page.keyboard.press('ArrowDown');
-  await page.waitForTimeout(300);
-  await page.keyboard.press('ArrowUp');
-  await page.waitForTimeout(300);
-  // Close search
+  for (const term in KNOWN_SEARCH_TERMS) {
   await page.keyboard.press('Escape');
-  
-  // Assert no errors occurred
-  expect(errorOccurred).toBe(false);
-  console.log('Arrow keys worked without errors');
+  await page.waitForTimeout(300);
+   let searchWorked = await homePage.search.searchForText(term);
+   await page.waitForTimeout(500);
+   searchWorked ?  searchedItemsCount++ : test.fail();
+  }
+  expect(searchedItemsCount).toBeGreaterThan(2);
+  await page.waitForTimeout(1000);
+  await page.waitForSelector('.DocSearch-Hit', { timeout: 5000 });
+
+  //select the first search result
+  let previousSelectedId = await page.locator('.DocSearch-Hit[aria-selected="true"]').first().getAttribute('id');
+  let navWorked = false
+
+  for (let i = 0; i < ARROW_KEYS_TEST.length; i++) {
+    const key = ARROW_KEYS_TEST[i];
+    await page.keyboard.press(key);
+    await page.waitForTimeout(500);
+
+    const currentSelectedId = await page.locator('.DocSearch-Hit[aria-selected="true"]').first().getAttribute('id');
+    currentSelectedId != previousSelectedId ? 
+    navWorked = true : navWorked = false;
+    previousSelectedId = currentSelectedId;
+  }
+  expect(navWorked).toBe(true); 
 });
 
 
